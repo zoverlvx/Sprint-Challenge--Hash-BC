@@ -26,6 +26,10 @@ def proof_of_work(last_proof):
     proof = 0
     #  TODO: Your code here
 
+    nash = hashlib.sha256(F"{last_proof}".encode()).hexdigest()
+    while valid_proof(nash, proof) is False:
+        proof += 1
+
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
 
@@ -40,8 +44,13 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    pass
-
+    # make a new hash
+    nash = hashlib.sha256(F"{proof}".encode()).hexdigest()
+    # check to see if the last six of the new hash 
+    # are exactly equal to the last hash portion
+    return nash[:6] == last_hash[-6:]
+    # from beginning up till index 6
+    # from the end, back up till the sixth index, then till the end
 
 if __name__ == '__main__':
     # What node are we interacting with?

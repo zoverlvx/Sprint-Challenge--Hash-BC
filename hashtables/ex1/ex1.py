@@ -8,7 +8,7 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
-    # gives me an index of the weight and gives me a weight
+    # gives me an index of the weight and gives me the weight
     for index, weight in enumerate(weights):
         # inserts a hashtable, weight, and its index
         hash_table_insert(ht, weight, index)
